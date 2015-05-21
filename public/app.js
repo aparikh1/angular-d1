@@ -31,6 +31,7 @@ app.controller('MainController', function ($scope) {
 })
 
 app.controller('FlashCardController', function($scope) {
+	$scope.answered = false;
 
 	$scope.flashCard = {
 	    question: 'What is Angular?',
@@ -42,14 +43,17 @@ app.controller('FlashCardController', function($scope) {
 	};
 
 	$scope.answerQuestion = function(answer) {
-		console.log(answer.correct);
-		$scope.answered = true;
 
-		if (answer.correct) {
-			$scope.answeredCorrectly = answer.correct;
-		} else {
-			$scope.answeredCorrectly = answer.correct;
+		if (!$scope.answered) {
+			if (answer.correct) {
+				$scope.answeredCorrectly = answer.correct;
+			} else {
+				$scope.answeredCorrectly = answer.correct;
+			}
+			$scope.answered = true;
 		}
+
+
 		
 		// return answer.correct;
 	}
